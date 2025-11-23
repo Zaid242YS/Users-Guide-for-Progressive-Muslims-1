@@ -1,0 +1,1740 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Career Planner - User's Manual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --linkedin-blue: #0A66C2;
+            --dark-blue: #004182;
+            --success-green: #057642;
+            --warning-orange: #F5A623;
+            --gray-100: #F3F2EF;
+            --gray-800: #333333;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.8;
+            color: var(--gray-800);
+            background-color: var(--gray-100);
+            padding: 2rem;
+        }
+
+        .manual-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--linkedin-blue), var(--dark-blue));
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .toc {
+            background: var(--gray-100);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .toc h2 {
+            color: var(--linkedin-blue);
+            margin-bottom: 1rem;
+        }
+
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .toc li:last-child {
+            border-bottom: none;
+        }
+
+        .toc a {
+            color: var(--linkedin-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .toc a:hover {
+            color: var(--dark-blue);
+            padding-left: 10px;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 2rem;
+        }
+
+        .section h2 {
+            color: var(--linkedin-blue);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--linkedin-blue);
+        }
+
+        .section h3 {
+            color: var(--dark-blue);
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .section h4 {
+            color: var(--gray-800);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+        }
+
+        .section ul, .section ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-box {
+            background: #E7F3FF;
+            border-left: 4px solid var(--linkedin-blue);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .tip-box {
+            background: #FFF4E6;
+            border-left: 4px solid var(--warning-orange);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .success-box {
+            background: #E8F5E9;
+            border-left: 4px solid var(--success-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: var(--linkedin-blue);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .screenshot-placeholder {
+            background: var(--gray-100);
+            border: 2px dashed #ccc;
+            padding: 2rem;
+            text-align: center;
+            color: #666;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: var(--linkedin-blue);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: var(--gray-100);
+        }
+
+        .button-example {
+            display: inline-block;
+            background: var(--linkedin-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--gray-100);
+            text-align: center;
+            color: #666;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            .manual-container {
+                box-shadow: none;
+            }
+            .toc a {
+                color: black;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .manual-container {
+                padding: 1.5rem;
+            }
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            .section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="manual-container">
+        <div class="header">
+            <h1>📘 User's Manual</h1>
+            <p>Professional LinkedIn Career Development & Job Search Digital Planner</p>
+            <p style="font-size: 0.9rem; margin-top: 1rem;">Your Complete Guide to Career Success</p>
+        </div>
+
+        <div class="toc">
+            <h2>📑 Table of Contents</h2>
+            <ul>
+                <li><a href="#section1">1. Getting Started</a></li>
+                <li><a href="#section2">2. Dashboard Overview</a></li>
+                <li><a href="#section3">3. Career Profile Builder</a></li>
+                <li><a href="#section4">4. Skills Assessment Tool</a></li>
+                <li><a href="#section5">5. LinkedIn Profile Optimizer</a></li>
+                <li><a href="#section6">6. Application Tracker</a></li>
+                <li><a href="#section7">7. Professional Networking Hub</a></li>
+                <li><a href="#section8">8. Data Management & Export</a></li>
+                <li><a href="#section9">9. Best Practices & Tips</a></li>
+                <li><a href="#section10">10. Troubleshooting</a></li>
+                <li><a href="#section11">11. Frequently Asked Questions</a></li>
+                <li><a href="#section12">12. Global South Career Perspectives</a></li>
+            </ul>
+        </div>
+
+        <!-- Section 1: Getting Started -->
+        <section id="section1" class="section">
+            <h2>1. Getting Started</h2>
+            
+            <h3>Welcome to Your Career Planning Tool</h3>
+            <p>The LinkedIn Career Development & Job Search Digital Planner is a comprehensive, browser-based application designed to help professionals at all career stages manage their job search, optimize their LinkedIn presence, and achieve their career goals.</p>
+
+            <div class="feature-box">
+                <h4>🎯 What This Tool Does:</h4>
+                <ul>
+                    <li><strong>Organizes</strong> your entire job search process in one centralized location</li>
+                    <li><strong>Optimizes</strong> your LinkedIn profile for maximum visibility</li>
+                    <li><strong>Tracks</strong> applications, interviews, and networking contacts</li>
+                    <li><strong>Analyzes</strong> your skills and identifies development opportunities</li>
+                    <li><strong>Saves</strong> all your data locally in your browser for privacy and convenience</li>
+                </ul>
+            </div>
+
+            <h3>System Requirements</h3>
+            <ul>
+                <li>Modern web browser (Chrome, Firefox, Safari, Edge)</li>
+                <li>JavaScript enabled</li>
+                <li>Internet connection (for initial load only)</li>
+                <li>Minimum screen resolution: 1024x768 recommended</li>
+            </ul>
+
+            <h3>First-Time Setup</h3>
+            <div class="step-number">1</div> <strong>Open the Application:</strong> Open the <code>linkedin-career-planner.html</code> file in your web browser.
+            <br><br>
+            <div class="step-number">2</div> <strong>Allow Local Storage:</strong> The app will request permission to store data locally. Click "Allow" to enable automatic saving.
+            <br><br>
+            <div class="step-number">3</div> <strong>Choose Your Display Mode:</strong> Use the dark mode toggle in the header if you prefer a darker interface for extended use.
+            <br><br>
+            <div class="step-number">4</div> <strong>Navigate to Dashboard:</strong> You'll start on the Dashboard. Familiarize yourself with the navigation menu.
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong> Bookmark the file location in your browser for quick access. Your data automatically saves after every change, so you can close and reopen the application anytime without losing information.
+            </div>
+
+            <h3>Understanding the Interface</h3>
+            <p>The application is divided into seven main sections, accessible via the top navigation bar:</p>
+            <table>
+                <tr>
+                    <th>Section</th>
+                    <th>Purpose</th>
+                    <th>Best Used For</th>
+                </tr>
+                <tr>
+                    <td>Dashboard</td>
+                    <td>Overview of your progress</td>
+                    <td>Daily check-ins, goal tracking</td>
+                </tr>
+                <tr>
+                    <td>Career Profile</td>
+                    <td>Your professional identity</td>
+                    <td>Initial setup, quarterly updates</td>
+                </tr>
+                <tr>
+                    <td>Skills Assessment</td>
+                    <td>Evaluate and track skills</td>
+                    <td>Gap analysis, learning plans</td>
+                </tr>
+                <tr>
+                    <td>LinkedIn Optimizer</td>
+                    <td>Profile improvement</td>
+                    <td>Profile updates, optimization</td>
+                </tr>
+                <tr>
+                    <td>Application Tracker</td>
+                    <td>Job application management</td>
+                    <td>Active job search</td>
+                </tr>
+                <tr>
+                    <td>Networking Hub</td>
+                    <td>Contact management</td>
+                    <td>Relationship building</td>
+                </tr>
+                <tr>
+                    <td>Settings</td>
+                    <td>Data export/import</td>
+                    <td>Backup, device transfers</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Section 2: Dashboard Overview -->
+        <section id="section2" class="section">
+            <h2>2. Dashboard Overview</h2>
+            
+            <h3>Your Command Center</h3>
+            <p>The Dashboard provides a comprehensive snapshot of your career development activities and progress. This is your starting point each time you open the application.</p>
+
+            <h3>Key Dashboard Components</h3>
+
+            <h4>Career Goals Section</h4>
+            <p>Set and track up to three primary career goals:</p>
+            <ul>
+                <li><strong>Goal Title:</strong> Be specific (e.g., "Secure Senior Marketing Manager position")</li>
+                <li><strong>Target Date:</strong> Set realistic deadlines to create urgency</li>
+                <li><strong>Progress Tracking:</strong> Update percentage completion regularly</li>
+            </ul>
+
+            <div class="feature-box">
+                <h4>📊 Dashboard Statistics Display:</h4>
+                <ul>
+                    <li><strong>Total Applications:</strong> Shows all job applications submitted</li>
+                    <li><strong>Active Applications:</strong> Applications currently in progress</li>
+                    <li><strong>Interviews Scheduled:</strong> Upcoming interview count</li>
+                    <li><strong>Network Contacts:</strong> Total professional contacts tracked</li>
+                    <li><strong>Profile Optimization Score:</strong> Your LinkedIn profile strength (0-100)</li>
+                </ul>
+            </div>
+
+            <h3>How to Use the Dashboard Effectively</h3>
+            
+            <div class="step-number">1</div> <strong>Morning Ritual:</strong> Start each day by reviewing your dashboard
+            <br><br>
+            <div class="step-number">2</div> <strong>Update Goals:</strong> Adjust progress percentages weekly
+            <br><br>
+            <div class="step-number">3</div> <strong>Check Statistics:</strong> Monitor your activity levels
+            <br><br>
+            <div class="step-number">4</div> <strong>Identify Gaps:</strong> If statistics are low, increase activity in that area
+
+            <div class="success-box">
+                <strong>✅ Success Indicator:</strong> A healthy job search shows consistent activity across all metrics. Aim for at least 5 new applications per week, 2-3 new network contacts weekly, and regular profile improvements.
+            </div>
+        </section>
+
+        <!-- Section 3: Career Profile Builder -->
+        <section id="section3" class="section">
+            <h2>3. Career Profile Builder</h2>
+            
+            <h3>Building Your Professional Foundation</h3>
+            <p>Your Career Profile is the foundation of your job search strategy. This section helps you articulate your professional identity clearly and consistently.</p>
+
+            <h3>Profile Components</h3>
+
+            <h4>A. Current Role Information</h4>
+            <ul>
+                <li><strong>Job Title:</strong> Your current or most recent position</li>
+                <li><strong>Company:</strong> Organization name</li>
+                <li><strong>Industry:</strong> Primary industry sector</li>
+                <li><strong>Years of Experience:</strong> Total professional experience</li>
+                <li><strong>Career Level:</strong> Entry, Mid-Level, Senior, Executive, C-Suite</li>
+            </ul>
+
+            <h4>B. Career Objectives</h4>
+            <p>Define what you're seeking in your next role:</p>
+            <ul>
+                <li><strong>Target Role:</strong> Specific job title you're pursuing</li>
+                <li><strong>Target Industry:</strong> Preferred industry (can be multiple)</li>
+                <li><strong>Geographic Preference:</strong> Location requirements (local, remote, willing to relocate)</li>
+                <li><strong>Desired Salary Range:</strong> Annual compensation expectations</li>
+                <li><strong>Work Environment:</strong> Office, hybrid, remote preferences</li>
+            </ul>
+
+            <div class="feature-box">
+                <h4>🎯 Writing Effective Career Objectives:</h4>
+                <p><strong>Good Example:</strong> "Seeking a Senior Product Manager role in SaaS companies, focusing on B2B products, preferably remote or in major tech hubs, with compensation range of $140,000-$170,000"</p>
+                <p><strong>Why This Works:</strong> Specific role, clear industry, defined location flexibility, realistic salary range</p>
+            </div>
+
+            <h4>C. Core Competencies</h4>
+            <p>List 5-10 key professional strengths:</p>
+            <ul>
+                <li>Strategic planning</li>
+                <li>Team leadership</li>
+                <li>Data analysis</li>
+                <li>Project management</li>
+                <li>Client relations</li>
+            </ul>
+
+            <h4>D. Professional Summary</h4>
+            <p>Craft a compelling 3-4 sentence summary that includes:</p>
+            <ol>
+                <li>Your professional identity and experience level</li>
+                <li>Key achievements or expertise areas</li>
+                <li>What you bring to employers</li>
+                <li>What you're seeking next</li>
+            </ol>
+
+            <div class="tip-box">
+                <strong>💡 Profile Update Schedule:</strong>
+                <ul>
+                    <li><strong>Initial Setup:</strong> Spend 30-45 minutes crafting thoughtful responses</li>
+                    <li><strong>Monthly Review:</strong> Update achievements and refine objectives</li>
+                    <li><strong>Quarterly Deep Dive:</strong> Complete profile reassessment</li>
+                    <li><strong>Career Change:</strong> Full profile revision when transitioning roles</li>
+                </ul>
+            </div>
+
+            <h3>Best Practices for Career Profile</h3>
+            <ol>
+                <li><strong>Be Specific:</strong> Vague profiles lead to vague opportunities</li>
+                <li><strong>Quantify When Possible:</strong> Include numbers, percentages, dollar amounts</li>
+                <li><strong>Use Industry Keywords:</strong> Include terms from target job descriptions</li>
+                <li><strong>Stay Current:</strong> Update with new skills and achievements regularly</li>
+                <li><strong>Align Everything:</strong> Ensure your profile matches your resume and LinkedIn</li>
+            </ol>
+        </section>
+
+        <!-- Section 4: Skills Assessment Tool -->
+        <section id="section4" class="section">
+            <h2>4. Skills Assessment Tool</h2>
+            
+            <h3>Understanding Your Skill Inventory</h3>
+            <p>The Skills Assessment Tool helps you evaluate your current capabilities, identify gaps, and create development plans to become more competitive in your target roles.</p>
+
+            <h3>How to Conduct a Skills Assessment</h3>
+
+            <h4>Step 1: Inventory Your Skills</h4>
+            <p>Create a comprehensive list of your skills across three categories:</p>
+
+            <table>
+                <tr>
+                    <th>Skill Category</th>
+                    <th>Examples</th>
+                    <th>Rating System</th>
+                </tr>
+                <tr>
+                    <td>Technical Skills</td>
+                    <td>Programming languages, software platforms, tools, certifications</td>
+                    <td>1-5 (Beginner to Expert)</td>
+                </tr>
+                <tr>
+                    <td>Soft Skills</td>
+                    <td>Leadership, communication, problem-solving, teamwork</td>
+                    <td>1-5 (Developing to Mastered)</td>
+                </tr>
+                <tr>
+                    <td>Industry Knowledge</td>
+                    <td>Regulations, market trends, best practices, methodologies</td>
+                    <td>1-5 (Basic to Advanced)</td>
+                </tr>
+            </table>
+
+            <h4>Step 2: Rate Your Proficiency</h4>
+            <p>Use this rating scale for honest self-assessment:</p>
+            <ul>
+                <li><strong>1 - Beginner:</strong> Aware of the skill, limited practical experience</li>
+                <li><strong>2 - Basic:</strong> Can perform with guidance, limited independent application</li>
+                <li><strong>3 - Intermediate:</strong> Can perform independently, comfortable with routine tasks</li>
+                <li><strong>4 - Advanced:</strong> Can handle complex scenarios, train others</li>
+                <li><strong>5 - Expert:</strong> Recognized authority, innovative applications</li>
+            </ul>
+
+            <div class="feature-box">
+                <h4>🎯 Skills Gap Analysis Process:</h4>
+                <ol>
+                    <li>List all your current skills with ratings</li>
+                    <li>Review 5-10 job descriptions for target roles</li>
+                    <li>Identify required skills you lack or rate low (1-2)</li>
+                    <li>Prioritize skills with highest market demand</li>
+                    <li>Create a development plan for top 3-5 gap skills</li>
+                </ol>
+            </div>
+
+            <h3>Creating a Skill Development Plan</h3>
+
+            <p>For each skill you want to develop:</p>
+
+            <div class="step-number">1</div> <strong>Set a Target Level:</strong> Where do you need to be? (Usually 3-4 for most roles)
+            <br><br>
+            <div class="step-number">2</div> <strong>Identify Resources:</strong>
+            <ul style="margin-left: 3rem;">
+                <li>Online courses (Coursera, LinkedIn Learning, Udemy)</li>
+                <li>Certifications (industry-recognized credentials)</li>
+                <li>Practice projects (real-world application)</li>
+                <li>Mentorship (learn from experts)</li>
+            </ul>
+            <br>
+            <div class="step-number">3</div> <strong>Set Timeline:</strong> Realistic timeframe to reach target level
+            <br><br>
+            <div class="step-number">4</div> <strong>Track Progress:</strong> Update ratings monthly as you improve
+
+            <div class="success-box">
+                <strong>✅ Skills Showcase Strategy:</strong> Once you rate yourself 3 or higher in a skill, actively showcase it:
+                <ul>
+                    <li>Add to LinkedIn Skills section</li>
+                    <li>Include in resume</li>
+                    <li>Mention in cover letters</li>
+                    <li>Discuss in interviews with specific examples</li>
+                    <li>Create portfolio pieces demonstrating competency</li>
+                </ul>
+            </div>
+
+            <h3>Market Demand Assessment</h3>
+            <p>For each skill, research its market value:</p>
+            <ul>
+                <li><strong>High Demand:</strong> Appears in 70%+ of target job postings</li>
+                <li><strong>Medium Demand:</strong> Appears in 30-70% of postings</li>
+                <li><strong>Low Demand:</strong> Nice to have, but not critical</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Smart Prioritization:</strong> Focus development energy on High Demand skills where you currently rate 1-2. These give you the biggest competitive advantage improvement for your time investment.
+            </div>
+        </section>
+
+        <!-- Section 5: LinkedIn Profile Optimizer -->
+        <section id="section5" class="section">
+            <h2>5. LinkedIn Profile Optimizer</h2>
+            
+            <h3>Maximizing Your LinkedIn Presence</h3>
+            <p>Your LinkedIn profile is often the first impression recruiters and hiring managers have of you. The Profile Optimizer helps you create a compelling, keyword-rich profile that attracts opportunities.</p>
+
+            <h3>Profile Scoring System</h3>
+            <p>The optimizer evaluates your profile across multiple dimensions and provides a score out of 100:</p>
+
+            <table>
+                <tr>
+                    <th>Score Range</th>
+                    <th>Profile Status</th>
+                    <th>Action Needed</th>
+                </tr>
+                <tr>
+                    <td>0-40</td>
+                    <td style="color: red;">Needs Major Improvement</td>
+                    <td>Complete all basic sections immediately</td>
+                </tr>
+                <tr>
+                    <td>41-60</td>
+                    <td style="color: orange;">Fair - Needs Work</td>
+                    <td>Enhance weak sections, add details</td>
+                </tr>
+                <tr>
+                    <td>61-80</td>
+                    <td style="color: #FFA500;">Good - Nearly Optimized</td>
+                    <td>Refine existing content, add keywords</td>
+                </tr>
+                <tr>
+                    <td>81-100</td>
+                    <td style="color: green;">Excellent - Well Optimized</td>
+                    <td>Maintain with regular updates</td>
+                </tr>
+            </table>
+
+            <h3>Key Profile Elements to Optimize</h3>
+
+            <h4>1. Professional Headline (15 points)</h4>
+            <p>Your headline appears everywhere your name appears on LinkedIn. Make it count!</p>
+
+            <div class="feature-box">
+                <strong>Weak Headline:</strong> "Marketing Professional"<br>
+                <strong>Strong Headline:</strong> "Digital Marketing Manager | SEO & Content Strategy Expert | Driving 300% ROI Growth | B2B SaaS Specialist"
+                <br><br>
+                <strong>What Makes It Strong:</strong>
+                <ul>
+                    <li>Specific role title</li>
+                    <li>Key skills/specializations</li>
+                    <li>Quantified achievement</li>
+                    <li>Industry focus</li>
+                    <li>All within 120 character limit</li>
+                </ul>
+            </div>
+
+            <h4>2. About/Summary Section (20 points)</h4>
+            <p>This is your elevator pitch. Structure it as:</p>
+            <ol>
+                <li><strong>Hook:</strong> Attention-grabbing opening statement</li>
+                <li><strong>Expertise:</strong> What you do and how you do it differently</li>
+                <li><strong>Achievements:</strong> Quantified results you've delivered</li>
+                <li><strong>Value Proposition:</strong> What you offer employers/clients</li>
+                <li><strong>Call to Action:</strong> How to connect with you</li>
+            </ol>
+
+            <div class="tip-box">
+                <strong>💡 Keywords Strategy:</strong> Review 10 job descriptions for your target role. Identify the most common skills, tools, and qualifications mentioned. Naturally incorporate these keywords throughout your About section.
+            </div>
+
+            <h4>3. Experience Section (25 points)</h4>
+            <p>For each position, include:</p>
+            <ul>
+                <li><strong>Company Context:</strong> Brief description of the organization</li>
+                <li><strong>Role Responsibilities:</strong> Key duties and scope</li>
+                <li><strong>Achievements:</strong> Specific, quantified accomplishments</li>
+                <li><strong>Skills Used:</strong> Relevant tools and methodologies</li>
+            </ul>
+
+            <div class="feature-box">
+                <strong>Achievement Formula:</strong> [Action Verb] + [What You Did] + [Result/Impact]
+                <br><br>
+                <strong>Examples:</strong>
+                <ul>
+                    <li>"<strong>Led</strong> cross-functional team of 12 in product launch, resulting in <strong>$2.5M first-year revenue</strong>"</li>
+                    <li>"<strong>Redesigned</strong> customer onboarding process, <strong>reducing</strong> time-to-value by <strong>40%</strong> and <strong>increasing</strong> retention by <strong>25%</strong>"</li>
+                    <li>"<strong>Implemented</strong> data analytics platform that <strong>improved</strong> decision-making speed by <strong>60%</strong>"</li>
+                </ul>
+            </div>
+
+            <h4>4. Skills Section (15 points)</h4>
+            <p>Add up to 50 skills, prioritizing:</p>
+            <ul>
+                <li><strong>Top 3 Skills:</strong> These appear prominently - choose carefully</li>
+                <li><strong>Required Skills:</strong> All skills listed in target job descriptions</li>
+                <li><strong>Endorsements:</strong> Request endorsements from colleagues</li>
+                <li><strong>Assessments:</strong> Complete LinkedIn Skill Assessments to earn badges</li>
+            </ul>
+
+            <h4>5. Education & Certifications (10 points)</h4>
+            <ul>
+                <li>List all degrees with full details</li>
+                <li>Add relevant coursework</li>
+                <li>Include professional certifications</li>
+                <li>Add ongoing learning (courses, bootcamps)</li>
+            </ul>
+
+            <h4>6. Recommendations (10 points)</h4>
+            <p>Aim for 3-5 strong recommendations that:</p>
+            <ul>
+                <li>Come from managers, colleagues, or clients</li>
+                <li>Include specific examples of your work</li>
+                <li>Highlight different skills/qualities</li>
+                <li>Are recent (within 2 years)</li>
+            </ul>
+
+            <h4>7. Additional Sections (5 points)</h4>
+            <ul>
+                <li><strong>Accomplishments:</strong> Publications, patents, awards, languages</li>
+                <li><strong>Volunteer Experience:</strong> Shows character and values</li>
+                <li><strong>Projects:</strong> Showcase significant work</li>
+            </ul>
+
+            <h3>Weekly Optimization Routine</h3>
+            
+            <div class="step-number">1</div> <strong>Monday:</strong> Add any new skills learned
+            <br><br>
+            <div class="step-number">2</div> <strong>Wednesday:</strong> Engage with content (like, comment, share)
+            <br><br>
+            <div class="step-number">3</div> <strong>Friday:</strong> Post original content or article
+            <br><br>
+            <div class="step-number">4</div> <strong>Monthly:</strong> Update experience with recent achievements
+
+            <div class="success-box">
+                <strong>✅ Profile Visibility Boosters:</strong>
+                <ul>
+                    <li>Set profile to "Open to Work" for recruiters</li>
+                    <li>Customize your LinkedIn URL (linkedin.com/in/yourname)</li>
+                    <li>Add a professional profile photo (increases profile views by 21x)</li>
+                    <li>Add a background banner image</li>
+                    <li>Turn on Creator Mode for additional features</li>
+                    <li>Post consistently (2-3 times per week minimum)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 6: Application Tracker -->
+        <section id="section6" class="section">
+            <h2>6. Application Tracker</h2>
+            
+            <h3>Managing Your Job Application Pipeline</h3>
+            <p>The Application Tracker helps you stay organized and maintain momentum throughout your job search by keeping all application details in one place.</p>
+
+            <h3>Adding a New Application</h3>
+
+            <div class="step-number">1</div> <strong>Navigate to Application Tracker</strong>
+            <br><br>
+            <div class="step-number">2</div> <strong>Click "Add New Application"</strong>
+            <br><br>
+            <div class="step-number">3</div> <strong>Enter Required Information:</strong>
+
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>Company Name</td>
+                    <td>Organization you're applying to</td>
+                    <td>TechCorp Solutions</td>
+                </tr>
+                <tr>
+                    <td>Job Title</td>
+                    <td>Exact title from posting</td>
+                    <td>Senior Product Manager</td>
+                </tr>
+                <tr>
+                    <td>Application Date</td>
+                    <td>Date you submitted</td>
+                    <td>11/15/2025</td>
+                </tr>
+                <tr>
+                    <td>Job Posting URL</td>
+                    <td>Link to original posting</td>
+                    <td>https://company.com/jobs/12345</td>
+                </tr>
+                <tr>
+                    <td>Current Status</td>
+                    <td>Application stage</td>
+                    <td>Applied, Phone Screen, etc.</td>
+                </tr>
+                <tr>
+                    <td>Salary Range</td>
+                    <td>Posted or expected range</td>
+                    <td>$140k - $170k</td>
+                </tr>
+                <tr>
+                    <td>Priority Level</td>
+                    <td>High, Medium, or Low</td>
+                    <td>High</td>
+                </tr>
+            </table>
+
+            <h3>Application Status Stages</h3>
+
+            <div class="feature-box">
+                <h4>📊 Standard Application Progression:</h4>
+                <ol>
+                    <li><strong>Applied:</strong> Application submitted, awaiting response</li>
+                    <li><strong>Under Review:</strong> Confirmed received by employer</li>
+                    <li><strong>Phone Screen:</strong> Initial phone interview scheduled</li>
+                    <li><strong>First Interview:</strong> First formal interview scheduled</li>
+                    <li><strong>Second Interview:</strong> Advanced stage interview</li>
+                    <li><strong>Final Interview:</strong> Final round with decision makers</li>
+                    <li><strong>Offer Received:</strong> Job offer extended</li>
+                    <li><strong>Accepted:</strong> Offer accepted, starting soon</li>
+                    <li><strong>Rejected:</strong> Application unsuccessful</li>
+                    <li><strong>Withdrawn:</strong> You withdrew from consideration</li>
+                </ol>
+            </div>
+
+            <h3>Tracking Interview Details</h3>
+            <p>For each interview, record:</p>
+            <ul>
+                <li><strong>Interview Date & Time:</strong> Exact scheduling</li>
+                <li><strong>Interview Type:</strong> Phone, video, in-person</li>
+                <li><strong>Interviewer Name(s):</strong> Who you'll meet with</li>
+                <li><strong>Interview Focus:</strong> Technical, behavioral, case study</li>
+                <li><strong>Preparation Notes:</strong> Research findings, questions to ask</li>
+                <li><strong>Post-Interview Notes:</strong> How it went, next steps discussed</li>
+            </ul>
+
+            <h3>Application Follow-Up System</h3>
+
+            <table>
+                <tr>
+                    <th>Timeline</th>
+                    <th>Action</th>
+                    <th>Method</th>
+                </tr>
+                <tr>
+                    <td>Within 24 hours</td>
+                    <td>Thank you email after interview</td>
+                    <td>Email to interviewer(s)</td>
+                </tr>
+                <tr>
+                    <td>1 week</td>
+                    <td>Check in if no response to application</td>
+                    <td>LinkedIn message or email</td>
+                </tr>
+                <tr>
+                    <td>2 weeks</td>
+                    <td>Follow up on pending decision</td>
+                    <td>Polite email inquiry</td>
+                </tr>
+                <tr>
+                    <td>1 month</td>
+                    <td>Final check if no response</td>
+                    <td>Email, then update status</td>
+                </tr>
+            </table>
+
+            <div class="tip-box">
+                <strong>💡 Application Organization Tips:</strong>
+                <ul>
+                    <li><strong>Color Code Priority:</strong> Use priority levels to focus efforts</li>
+                    <li><strong>Set Reminders:</strong> Note follow-up dates in your calendar</li>
+                    <li><strong>Track Custom Materials:</strong> Note which resume/cover letter version you sent</li>
+                    <li><strong>Save Job Descriptions:</strong> Companies often remove postings - keep copies</li>
+                    <li><strong>Document Contacts:</strong> Record names of everyone you interact with</li>
+                </ul>
+            </div>
+
+            <h3>Application Analysis</h3>
+            <p>Review your tracker monthly to identify patterns:</p>
+            <ul>
+                <li><strong>Response Rate:</strong> What % of applications get responses?</li>
+                <li><strong>Interview Conversion:</strong> How many applications lead to interviews?</li>
+                <li><strong>Success Factors:</strong> Which types of companies/roles respond most?</li>
+                <li><strong>Timeline Patterns:</strong> How long does each stage typically take?</li>
+            </ul>
+
+            <div class="success-box">
+                <strong>✅ Healthy Application Pipeline Indicators:</strong>
+                <ul>
+                    <li>10-15 active applications at any time</li>
+                    <li>2-3 new applications submitted per week</li>
+                    <li>At least 20% response rate to applications</li>
+                    <li>1-2 interviews scheduled per week</li>
+                    <li>Regular movement through pipeline stages</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 7: Professional Networking Hub -->
+        <section id="section7" class="section">
+            <h2>7. Professional Networking Hub</h2>
+            
+            <h3>Building and Managing Your Professional Network</h3>
+            <p>Your professional network is one of your most valuable career assets. The Networking Hub helps you systematically build, nurture, and leverage relationships.</p>
+
+            <h3>Adding Network Contacts</h3>
+
+            <div class="feature-box">
+                <h4>Contact Information to Track:</h4>
+                <ul>
+                    <li><strong>Basic Details:</strong> Name, title, company, industry</li>
+                    <li><strong>Contact Info:</strong> LinkedIn URL, email, phone (if appropriate)</li>
+                    <li><strong>Connection Context:</strong> How you know them, where you met</li>
+                    <li><strong>Relationship Strength:</strong> Close colleague, professional acquaintance, new connection</li>
+                    <li><strong>Interaction History:</strong> Last contact date, conversation topics</li>
+                    <li><strong>Value Exchange:</strong> How you can help each other</li>
+                    <li><strong>Follow-Up Notes:</strong> Reminders for future outreach</li>
+                </ul>
+            </div>
+
+            <h3>Types of Professional Connections</h3>
+
+            <table>
+                <tr>
+                    <th>Connection Type</th>
+                    <th>Description</th>
+                    <th>Interaction Frequency</th>
+                </tr>
+                <tr>
+                    <td>Current Colleagues</td>
+                    <td>People you work with now</td>
+                    <td>Daily/Weekly</td>
+                </tr>
+                <tr>
+                    <td>Former Colleagues</td>
+                    <td>Past coworkers and managers</td>
+                    <td>Monthly/Quarterly</td>
+                </tr>
+                <tr>
+                    <td>Industry Peers</td>
+                    <td>Professionals in your field</td>
+                    <td>Quarterly</td>
+                </tr>
+                <tr>
+                    <td>Mentors/Advisors</td>
+                    <td>People guiding your career</td>
+                    <td>Monthly</td>
+                </tr>
+                <tr>
+                    <td>Recruiters</td>
+                    <td>Talent acquisition professionals</td>
+                    <td>Quarterly or as needed</td>
+                </tr>
+                <tr>
+                    <td>Professional Groups</td>
+                    <td>Association and community members</td>
+                    <td>Event-based</td>
+                </tr>
+            </table>
+
+            <h3>Networking Action Plan</h3>
+
+            <h4>Weekly Networking Activities</h4>
+            <ol>
+                <li><strong>Monday:</strong> Identify 5 new people to connect with (LinkedIn, events, mutual connections)</li>
+                <li><strong>Tuesday-Thursday:</strong> Send 3-5 personalized connection requests or emails</li>
+                <li><strong>Friday:</strong> Follow up with 2-3 existing contacts (comment on their posts, send article, schedule coffee)</li>
+                <li><strong>Ongoing:</strong> Engage with network content (like, comment, share thoughtfully)</li>
+            </ol>
+
+            <h4>Monthly Networking Goals</h4>
+            <ul>
+                <li>Add 20-30 new quality connections</li>
+                <li>Have 5-10 meaningful conversations (virtual coffee, informational interviews)</li>
+                <li>Attend 1-2 networking events (virtual or in-person)</li>
+                <li>Reconnect with 5 dormant contacts</li>
+                <li>Provide value to 10 connections (make introductions, share resources, offer help)</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Personalized Outreach Template:</strong>
+                <br><br>
+                "Hi [Name],<br><br>
+                I came across your profile and noticed we both [shared connection/interest/background]. I'm particularly interested in [specific aspect of their work].<br><br>
+                [One sentence about yourself and your current situation]<br><br>
+                I'd love to connect and learn more about [their expertise/company/industry]. Would you be open to a brief virtual coffee chat in the coming weeks?<br><br>
+                Best regards,<br>
+                [Your Name]"
+            </div>
+
+            <h3>Informational Interview Strategy</h3>
+
+            <p>Informational interviews are powerful networking tools. Here's how to conduct them:</p>
+
+            <div class="step-number">1</div> <strong>Identify Targets:</strong> People in roles/companies you're interested in
+            <br><br>
+            <div class="step-number">2</div> <strong>Request Respectfully:</strong> Ask for 15-20 minutes of their time
+            <br><br>
+            <div class="step-number">3</div> <strong>Prepare Questions:</strong>
+            <ul style="margin-left: 3rem;">
+                <li>How did you get into this role/industry?</li>
+                <li>What does a typical day look like?</li>
+                <li>What skills are most important for success?</li>
+                <li>What do you love about your work? What's challenging?</li>
+                <li>What trends are shaping your industry?</li>
+                <li>What advice would you give someone entering this field?</li>
+                <li>Who else should I talk to? (ask for referrals)</li>
+            </ul>
+            <br>
+            <div class="step-number">4</div> <strong>Follow Up:</strong> Send thank you note within 24 hours
+            <br><br>
+            <div class="step-number">5</div> <strong>Stay Connected:</strong> Update them on your progress, share relevant articles
+
+            <div class="success-box">
+                <strong>✅ Networking Best Practices:</strong>
+                <ul>
+                    <li><strong>Give Before You Ask:</strong> Offer value before requesting favors</li>
+                    <li><strong>Be Authentic:</strong> Genuine relationships matter more than quantity</li>
+                    <li><strong>Track Interactions:</strong> Remember details about contacts for personalized follow-ups</li>
+                    <li><strong>Diversify Your Network:</strong> Connect across industries, roles, and experience levels</li>
+                    <li><strong>Stay Active:</strong> Regular engagement keeps you top of mind</li>
+                    <li><strong>Respect Time:</strong> Be concise and appreciative of others' availability</li>
+                    <li><strong>Close the Loop:</strong> Update people who helped you on outcomes</li>
+                </ul>
+            </div>
+
+            <h3>Leveraging Your Network for Job Search</h3>
+
+            <p>When you're actively job searching:</p>
+            <ul>
+                <li><strong>Inform Your Network:</strong> Let close contacts know you're looking (tactfully)</li>
+                <li><strong>Target Company Connections:</strong> Find people at companies you're interested in</li>
+                <li><strong>Request Referrals:</strong> Employee referrals significantly increase interview chances</li>
+                <li><strong>Seek Industry Intel:</strong> Ask about company culture, hiring processes, salary ranges</li>
+                <li><strong>Practice Interviews:</strong> Conduct mock interviews with trusted contacts</li>
+            </ul>
+        </section>
+
+        <!-- Section 8: Data Management -->
+        <section id="section8" class="section">
+            <h2>8. Data Management & Export</h2>
+            
+            <h3>Protecting and Managing Your Career Data</h3>
+            <p>Your career planning data is valuable. Proper data management ensures you never lose your progress and can access your information across devices.</p>
+
+            <h3>How Data is Stored</h3>
+            <p>The planner uses your browser's local storage to save all your data automatically:</p>
+            <ul>
+                <li><strong>Automatic Saving:</strong> Changes save immediately after each edit</li>
+                <li><strong>Browser-Specific:</strong> Data stays on the device and browser you're using</li>
+                <li><strong>No Cloud Sync:</strong> Your data never leaves your computer (privacy protection)</li>
+                <li><strong>Persistent:</strong> Data remains until you clear browser data or manually delete</li>
+            </ul>
+
+            <div class="feature-box">
+                <h4>⚠️ Important Data Storage Notes:</h4>
+                <ul>
+                    <li>Data is tied to specific browser on specific device</li>
+                    <li>Using different browsers (Chrome vs Firefox) means separate data sets</li>
+                    <li>Clearing browser cache/history may delete your planner data</li>
+                    <li>Private/Incognito browsing doesn't save data permanently</li>
+                </ul>
+            </div>
+
+            <h3>Exporting Your Data</h3>
+
+            <div class="step-number">1</div> <strong>Click "Export Data" Button</strong> (in Settings or header)
+            <br><br>
+            <div class="step-number">2</div> <strong>Choose Export Format:</strong> JSON file will download
+            <br><br>
+            <div class="step-number">3</div> <strong>Save File Securely:</strong> Store in cloud storage or external drive
+            <br><br>
+            <div class="step-number">4</div> <strong>File Contents:</strong> All your career data in structured format
+
+            <div class="tip-box">
+                <strong>💡 Export Schedule Recommendations:</strong>
+                <ul>
+                    <li><strong>Weekly:</strong> If actively job searching</li>
+                    <li><strong>Monthly:</strong> For ongoing career development</li>
+                    <li><strong>Before Major Updates:</strong> Browser upgrades, system changes</li>
+                    <li><strong>After Significant Changes:</strong> Adding many applications or contacts</li>
+                </ul>
+            </div>
+
+            <h3>Importing/Restoring Data</h3>
+            <p>To restore data on a new device or browser:</p>
+
+            <div class="step-number">1</div> Open the planner application
+            <br><br>
+            <div class="step-number">2</div> Click "Import Data" button
+            <br><br>
+            <div class="step-number">3</div> Select your previously exported JSON file
+            <br><br>
+            <div class="step-number">4</div> Confirm import - existing data will be replaced
+            <br><br>
+            <div class="step-number">5</div> Verify all information loaded correctly
+
+            <h3>Data Backup Best Practices</h3>
+
+            <ol>
+                <li><strong>Multiple Locations:</strong> Keep backups in 2-3 places
+                    <ul>
+                        <li>Cloud storage (Google Drive, Dropbox, OneDrive)</li>
+                        <li>External hard drive</li>
+                        <li>Email attachment to yourself</li>
+                    </ul>
+                </li>
+                <li><strong>Version Control:</strong> Include date in filename (career-planner-backup-2025-11-18.json)</li>
+                <li><strong>Regular Schedule:</strong> Set calendar reminder for exports</li>
+                <li><strong>Test Restores:</strong> Occasionally verify you can successfully import</li>
+            </ol>
+
+            <h3>Switching Devices or Browsers</h3>
+            <p>To move your planner to a new setup:</p>
+            <ol>
+                <li>Export data from old device/browser</li>
+                <li>Transfer the JSON file (email, USB drive, cloud storage)</li>
+                <li>Open planner on new device/browser</li>
+                <li>Import the JSON file</li>
+                <li>Continue working with all your data intact</li>
+            </ol>
+
+            <div class="success-box">
+                <strong>✅ Data Security Checklist:</strong>
+                <ul>
+                    <li>Export data at least monthly</li>
+                    <li>Store exports in secure, backed-up location</li>
+                    <li>Don't share export files (contains personal info)</li>
+                    <li>Keep multiple dated versions of exports</li>
+                    <li>Test import function occasionally</li>
+                    <li>Clear browser data carefully (or exempt this app)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 9: Best Practices -->
+        <section id="section9" class="section">
+            <h2>9. Best Practices & Tips</h2>
+            
+            <h3>Maximizing Your Career Planning Success</h3>
+
+            <h4>Daily Job Search Routine (30-60 minutes)</h4>
+            <ol>
+                <li><strong>Morning Review (10 min):</strong>
+                    <ul>
+                        <li>Check Dashboard for today's priorities</li>
+                        <li>Review any interview prep needed</li>
+                        <li>Identify top 3 tasks for the day</li>
+                    </ul>
+                </li>
+                <li><strong>Application Work (20-30 min):</strong>
+                    <ul>
+                        <li>Submit 1-2 new applications with tailored materials</li>
+                        <li>Follow up on pending applications</li>
+                        <li>Update application statuses</li>
+                    </ul>
+                </li>
+                <li><strong>Networking (10-15 min):</strong>
+                    <ul>
+                        <li>Send 2-3 connection requests or follow-ups</li>
+                        <li>Engage with content (meaningful comments)</li>
+                        <li>Schedule coffee chats or calls</li>
+                    </ul>
+                </li>
+                <li><strong>Learning (10 min):</strong>
+                    <ul>
+                        <li>Work on skill development</li>
+                        <li>Read industry news</li>
+                        <li>Research target companies</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h4>Weekly Career Development Tasks</h4>
+
+            <div class="feature-box">
+                <strong>Monday:</strong> Set weekly goals, review application pipeline<br>
+                <strong>Tuesday:</strong> Focus on skill development and certifications<br>
+                <strong>Wednesday:</strong> Networking day - reach out, schedule meetings<br>
+                <strong>Thursday:</strong> Content creation - update LinkedIn, write article<br>
+                <strong>Friday:</strong> Week review, export data backup, plan next week
+            </div>
+
+            <h4>Application Quality vs. Quantity</h4>
+
+            <div class="tip-box">
+                <strong>💡 The 80/20 Rule for Applications:</strong>
+                <br><br>
+                Rather than sending 100 generic applications:
+                <ul>
+                    <li>Send 20 highly targeted, customized applications</li>
+                    <li>Each with tailored resume highlighting relevant experience</li>
+                    <li>Custom cover letter addressing specific company needs</li>
+                    <li>Research company and mention specific details</li>
+                    <li>Follow up with connection request to recruiter or hiring manager</li>
+                </ul>
+                <strong>Result:</strong> 20% of effort, 80% of success rate
+            </div>
+
+            <h4>Interview Preparation Workflow</h4>
+            <p>As soon as interview is scheduled:</p>
+            <ol>
+                <li><strong>Research (1-2 hours):</strong>
+                    <ul>
+                        <li>Company website, recent news, competitors</li>
+                        <li>LinkedIn profiles of interviewers</li>
+                        <li>Glassdoor interview experiences</li>
+                        <li>Company culture and values</li>
+                    </ul>
+                </li>
+                <li><strong>Prepare Materials (1 hour):</strong>
+                    <ul>
+                        <li>STAR method examples for common questions</li>
+                        <li>Questions to ask interviewers</li>
+                        <li>Portfolio or work samples (if applicable)</li>
+                        <li>List of accomplishments and metrics</li>
+                    </ul>
+                </li>
+                <li><strong>Practice (30-60 min):</strong>
+                    <ul>
+                        <li>Mock interview with friend or mentor</li>
+                        <li>Record yourself answering questions</li>
+                        <li>Practice company-specific scenarios</li>
+                    </ul>
+                </li>
+                <li><strong>Logistics (15 min):</strong>
+                    <ul>
+                        <li>Test video setup if virtual</li>
+                        <li>Plan route if in-person</li>
+                        <li>Prepare professional outfit</li>
+                        <li>Print extra resumes</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h4>Maintaining Motivation During Long Searches</h4>
+
+            <div class="success-box">
+                <strong>✅ Staying Positive and Productive:</strong>
+                <ul>
+                    <li><strong>Celebrate Small Wins:</strong> Every application, connection, and interview is progress</li>
+                    <li><strong>Track Metrics:</strong> See your growing network and skills</li>
+                    <li><strong>Set Process Goals:</strong> Control what you can (applications sent) vs outcomes (offers received)</li>
+                    <li><strong>Maintain Routine:</strong> Consistent daily actions prevent overwhelm</li>
+                    <li><strong>Support Network:</strong> Connect with others in similar situations</li>
+                    <li><strong>Self-Care:</strong> Physical health affects mental resilience</li>
+                    <li><strong>Continuous Learning:</strong> Use downtime to build valuable skills</li>
+                </ul>
+            </div>
+
+            <h4>Red Flags to Avoid</h4>
+            <ul>
+                <li><strong>Applying Everywhere:</strong> Unfocused applications waste time</li>
+                <li><strong>Generic Materials:</strong> One-size-fits-all rarely works</li>
+                <li><strong>Neglecting Follow-Up:</strong> Most opportunities need persistence</li>
+                <li><strong>Ignoring LinkedIn:</strong> Missing where recruiters search</li>
+                <li><strong>Passive Networking:</strong> Just connecting without engaging</li>
+                <li><strong>Skipping Research:</strong> Shows lack of genuine interest</li>
+                <li><strong>Poor Interview Prep:</strong> "Winging it" is obvious</li>
+            </ul>
+
+            <h4>Success Metrics to Track</h4>
+            <p>Monitor these weekly to gauge effectiveness:</p>
+            <table>
+                <tr>
+                    <th>Metric</th>
+                    <th>Target Range</th>
+                    <th>Significance</th>
+                </tr>
+                <tr>
+                    <td>Applications Submitted</td>
+                    <td>5-15 per week</td>
+                    <td>Consistent activity level</td>
+                </tr>
+                <tr>
+                    <td>Response Rate</td>
+                    <td>15-30%</td>
+                    <td>Application quality indicator</td>
+                </tr>
+                <tr>
+                    <td>Interview Ratio</td>
+                    <td>1 interview per 5-10 applications</td>
+                    <td>Profile strength</td>
+                </tr>
+                <tr>
+                    <td>Network Growth</td>
+                    <td>20-30 connections per month</td>
+                    <td>Relationship building</td>
+                </tr>
+                <tr>
+                    <td>LinkedIn Engagement</td>
+                    <td>3-5 meaningful interactions daily</td>
+                    <td>Visibility increase</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Section 10: Troubleshooting -->
+        <section id="section10" class="section">
+            <h2>10. Troubleshooting</h2>
+            
+            <h3>Common Issues and Solutions</h3>
+
+            <h4>Data Not Saving</h4>
+            <p><strong>Symptoms:</strong> Information disappears after closing browser</p>
+            <p><strong>Solutions:</strong></p>
+            <ul>
+                <li>Ensure JavaScript is enabled in browser settings</li>
+                <li>Check browser isn't in Private/Incognito mode</li>
+                <li>Allow local storage for the page (check browser permissions)</li>
+                <li>Don't use browser's "Clear browsing data" feature</li>
+                <li>Try a different browser if issue persists</li>
+            </ul>
+
+            <h4>Export Button Not Working</h4>
+            <p><strong>Symptoms:</strong> Clicking export doesn't download file</p>
+            <p><strong>Solutions:</strong></p>
+            <ul>
+                <li>Check browser's download permissions</li>
+                <li>Look in Downloads folder - may have downloaded silently</li>
+                <li>Disable popup blockers temporarily</li>
+                <li>Try right-click on Export button and "Save link as"</li>
+            </ul>
+
+            <h4>Cannot Import Data</h4>
+            <p><strong>Symptoms:</strong> Import fails or shows error</p>
+            <p><strong>Solutions:</strong></p>
+            <ul>
+                <li>Verify file is correct JSON export from this planner</li>
+                <li>Check file wasn't corrupted during transfer</li>
+                <li>Ensure file extension is .json</li>
+                <li>Try opening file in text editor to verify it's valid JSON</li>
+                <li>Re-export from original device if file appears corrupted</li>
+            </ul>
+
+            <h4>Display Issues or Missing Elements</h4>
+            <p><strong>Symptoms:</strong> Interface looks broken or components missing</p>
+            <p><strong>Solutions:</strong></p>
+            <ul>
+                <li>Refresh page (Ctrl+R or Cmd+R)</li>
+                <li>Clear browser cache</li>
+                <li>Ensure browser is up to date</li>
+                <li>Try a different browser</li>
+                <li>Check screen resolution - minimum 1024x768 recommended</li>
+            </ul>
+
+            <h4>Dark Mode Not Working</h4>
+            <p><strong>Symptoms:</strong> Dark mode toggle doesn't change appearance</p>
+            <p><strong>Solutions:</strong></p>
+            <ul>
+                <li>Refresh the page after toggling</li>
+                <li>Check if browser extensions are interfering</li>
+                <li>Clear browser cache and cookies</li>
+            </ul>
+
+            <h4>Performance Issues (Slow Loading)</h4>
+            <p><strong>Symptoms:</strong> Application runs slowly with large amounts of data</p>
+            <p><strong>Solutions:</strong></p>
+            <ul>
+                <li>Export old/completed applications to archive file</li>
+                <li>Start fresh planner for new job searches</li>
+                <li>Close other browser tabs using resources</li>
+                <li>Restart browser</li>
+                <li>Use a modern browser (Chrome, Firefox, Edge)</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 When All Else Fails:</strong>
+                <ol>
+                    <li>Export your data (if possible)</li>
+                    <li>Close all browser windows</li>
+                    <li>Restart computer</li>
+                    <li>Open planner in different browser</li>
+                    <li>Import your data</li>
+                    <li>If issue persists, verify the HTML file isn't corrupted</li>
+                </ol>
+            </div>
+
+            <h3>Browser Compatibility</h3>
+            <table>
+                <tr>
+                    <th>Browser</th>
+                    <th>Recommended Version</th>
+                    <th>Known Issues</th>
+                </tr>
+                <tr>
+                    <td>Chrome</td>
+                    <td>Version 90+</td>
+                    <td>None - fully supported</td>
+                </tr>
+                <tr>
+                    <td>Firefox</td>
+                    <td>Version 88+</td>
+                    <td>None - fully supported</td>
+                </tr>
+                <tr>
+                    <td>Safari</td>
+                    <td>Version 14+</td>
+                    <td>May require storage permissions</td>
+                </tr>
+                <tr>
+                    <td>Edge</td>
+                    <td>Version 90+</td>
+                    <td>None - fully supported</td>
+                </tr>
+                <tr>
+                    <td>Internet Explorer</td>
+                    <td>Not Supported</td>
+                    <td>Please use modern browser</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Section 11: FAQ -->
+        <section id="section11" class="section">
+            <h2>11. Frequently Asked Questions</h2>
+            
+            <h3>General Questions</h3>
+
+            <h4>Q: Is my data secure and private?</h4>
+            <p><strong>A:</strong> Yes. All data is stored locally in your browser and never leaves your computer. There's no cloud service, no account creation, and no data transmission to external servers. Only you can access your information.</p>
+
+            <h4>Q: Can I use this on multiple devices?</h4>
+            <p><strong>A:</strong> Yes, but you need to manually transfer data. Export your data from one device and import it on another. There's no automatic syncing between devices.</p>
+
+            <h4>Q: What happens if I clear my browser history?</h4>
+            <p><strong>A:</strong> Depending on browser settings, this may delete your planner data. Always export your data before clearing browser storage. Consider excluding this site from history clearing.</p>
+
+            <h4>Q: Can I share this tool with colleagues?</h4>
+            <p><strong>A:</strong> Yes! You can share the HTML file with others. Each person will have their own separate data stored in their browser.</p>
+
+            <h3>Feature Questions</h3>
+
+            <h4>Q: How often should I update my profile information?</h4>
+            <p><strong>A:</strong> Monthly at minimum, weekly during active job search. Update immediately after major career events (promotions, new certifications, significant achievements).</p>
+
+            <h4>Q: What's the ideal LinkedIn profile optimization score?</h4>
+            <p><strong>A:</strong> Aim for 80+. Scores of 90+ indicate highly optimized profiles that attract recruiter attention.</p>
+
+            <h4>Q: How many applications should I have active at once?</h4>
+            <p><strong>A:</strong> 10-20 active applications is healthy. This allows you to focus quality attention on each while maintaining momentum.</p>
+
+            <h4>Q: Should I track rejected applications?</h4>
+            <p><strong>A:</strong> Yes! This helps you analyze patterns and calculate your success rates. Understanding what didn't work is as valuable as knowing what did.</p>
+
+            <h4>Q: Can I customize the categories and fields?</h4>
+            <p><strong>A:</strong> The current version has fixed categories. However, most text fields are flexible - use Notes sections for custom information.</p>
+
+            <h3>Technical Questions</h3>
+
+            <h4>Q: Does this work offline?</h4>
+            <p><strong>A:</strong> Yes! After initial load, the planner works completely offline. No internet connection needed.</p>
+
+            <h4>Q: What file format is the export?</h4>
+            <p><strong>A:</strong> Exports are in JSON format, a standard text-based data format that's human-readable and widely supported.</p>
+
+            <h4>Q: Can I edit the exported data file?</h4>
+            <p><strong>A:</strong> Technically yes, but it's not recommended unless you're familiar with JSON format. Incorrect edits may prevent successful import.</p>
+
+            <h4>Q: Is there a mobile version?</h4>
+            <p><strong>A:</strong> The interface is responsive and works on mobile browsers, though it's optimized for desktop/laptop use for the best experience.</p>
+
+            <h3>Career Development Questions</h3>
+
+            <h4>Q: How long does a typical job search take?</h4>
+            <p><strong>A:</strong> Average is 3-6 months for professional roles. Factors include industry, experience level, market conditions, and search activity intensity.</p>
+
+            <h4>Q: What's more important: LinkedIn profile or resume?</h4>
+            <p><strong>A:</strong> Both are critical but serve different purposes. LinkedIn is for discovery (recruiters finding you), resume is for applying (you reaching out). Optimize both.</p>
+
+            <h4>Q: Should I apply to jobs I'm not fully qualified for?</h4>
+            <p><strong>A:</strong> Yes! If you meet 60-70% of requirements and the role excites you, apply. Job descriptions are often wish lists, not strict requirements.</p>
+
+            <h4>Q: How do I stand out when hundreds apply for one job?</h4>
+            <p><strong>A:</strong> Four strategies work best: (1) Employee referrals, (2) Customized applications showing research, (3) Strong LinkedIn presence, (4) Direct outreach to hiring managers.</p>
+
+            <div class="success-box">
+                <h4>💼 Remember: Success Factors</h4>
+                <ul>
+                    <li><strong>Consistency beats perfection</strong> - Regular action matters more than perfect applications</li>
+                    <li><strong>Quality over quantity</strong> - 20 targeted applications beat 100 generic ones</li>
+                    <li><strong>Relationships matter most</strong> - Your network is your greatest asset</li>
+                    <li><strong>Persistence wins</strong> - Most successful job seekers hear "no" many times before finding "yes"</li>
+                    <li><strong>Stay organized</strong> - This tool helps you maintain focus and momentum</li>
+                </ul>
+            </div>
+        </section>
+
+
+        <!-- Section 12: Global South Perspectives -->
+        <section id="section12" class="section">
+            <h2>12. Global South Career Perspectives</h2>
+            
+            <div class="feature-box">
+                <h3>🌍 Operating from Southeast Asia: A Strategic Advantage</h3>
+                <p>This planner is developed and maintained from Southeast Asia, embracing a truly global perspective on career development. The transition to the Global South offers unique insights and advantages for modern professionals.</p>
+            </div>
+
+            <h3>Understanding Global South Career Dynamics</h3>
+            
+            <h4>The Changing Geography of Opportunity</h4>
+            <p>The future of work is no longer confined to Western metropolitan centers. Southeast Asia, the Middle East, Africa, and Latin America are emerging as dynamic hubs of innovation, entrepreneurship, and professional growth. This manual reflects that reality.</p>
+
+            <div class="success-box">
+                <h4>Key Advantages of the Global South Perspective:</h4>
+                <ul>
+                    <li><strong>Cost of Living Arbitrage:</strong> Maintain Western-level income while enjoying significantly lower living costs</li>
+                    <li><strong>Time Zone Bridge:</strong> Southeast Asia operates between Western and Eastern markets, enabling global collaboration</li>
+                    <li><strong>Cultural Diversity:</strong> Exposure to multiple markets, languages, and business practices</li>
+                    <li><strong>Emerging Markets:</strong> Access to rapidly growing economies with abundant opportunities</li>
+                    <li><strong>Digital Nomad Infrastructure:</strong> World-class internet, co-working spaces, and professional communities</li>
+                    <li><strong>Quality of Life:</strong> Tropical climate, rich culture, excellent food, and welcoming communities</li>
+                </ul>
+            </div>
+
+            <h3>Adapting Your Job Search for Global Opportunities</h3>
+
+            <h4>Remote Work is Your Gateway</h4>
+            <p>Living in the Global South doesn't limit your opportunities—it expands them. The key is positioning yourself for remote roles with global companies.</p>
+
+            <h4>Geographic Preferences Section:</h4>
+            <p>When filling out your Career Profile, consider these options:</p>
+            <ul>
+                <li><strong>Remote (Global):</strong> Open to working with companies worldwide from your Southeast Asian base</li>
+                <li><strong>Hybrid (Asia-Pacific):</strong> Available for occasional travel to regional offices</li>
+                <li><strong>International Opportunities:</strong> Emphasize cross-cultural experience and time zone flexibility</li>
+                <li><strong>Specify Your Time Zone:</strong> ICT (Indochina Time, GMT+7) or local equivalent</li>
+            </ul>
+
+            <h4>Highlighting Your Global South Advantage</h4>
+            <p><strong>In your LinkedIn Profile & Professional Summary, emphasize:</strong></p>
+            <ul>
+                <li>Cross-cultural communication skills</li>
+                <li>Experience working across multiple time zones</li>
+                <li>Understanding of emerging markets</li>
+                <li>Flexibility and adaptability in diverse environments</li>
+                <li>Digital-first mindset and remote work expertise</li>
+            </ul>
+
+            <h3>Time Zone Considerations for Global Professionals</h3>
+
+            <h4>Southeast Asia Time Zones (Primary: GMT+7 to GMT+9)</h4>
+            <table>
+                <tr>
+                    <th>Your Location</th>
+                    <th>Time Zone</th>
+                    <th>Best Overlap With</th>
+                </tr>
+                <tr>
+                    <td>Thailand, Vietnam, Cambodia</td>
+                    <td>ICT (GMT+7)</td>
+                    <td>China, Australia, India, Middle East</td>
+                </tr>
+                <tr>
+                    <td>Malaysia, Singapore, Philippines</td>
+                    <td>MYT/SGT/PHT (GMT+8)</td>
+                    <td>Greater China, Australia, Japan</td>
+                </tr>
+                <tr>
+                    <td>Indonesia (Jakarta)</td>
+                    <td>WIB (GMT+7)</td>
+                    <td>ASEAN region, Middle East</td>
+                </tr>
+            </table>
+
+            <h4>Optimizing Communication Across Time Zones</h4>
+            <div class="tip-box">
+                <strong>🕐 Time Zone Strategy:</strong>
+                <ul>
+                    <li><strong>US East Coast (EST/EDT):</strong> Your afternoon = their night/early morning. Schedule calls in your 7-11 PM or their 8-12 AM</li>
+                    <li><strong>US West Coast (PST/PDT):</strong> Your evening = their morning. Optimal overlap: your 10 PM - 2 AM = their 8 AM - 12 PM</li>
+                    <li><strong>Europe (CET/GMT):</strong> Your afternoon = their morning. Good overlap: your 2-6 PM = their 8 AM - 12 PM</li>
+                    <li><strong>Middle East (GST):</strong> Excellent overlap. Your 1-5 PM = their 9 AM - 1 PM</li>
+                    <li><strong>Australia/NZ:</strong> Near-perfect alignment with only 2-3 hour difference</li>
+                    <li><strong>East Asia:</strong> Excellent overlap with China, Japan, Korea (1-2 hour difference)</li>
+                </ul>
+            </div>
+
+            <h3>Salary Expectations and Compensation</h3>
+
+            <h4>Global Salary Standards</h4>
+            <p>When using the Compensation Calculator, consider these factors:</p>
+
+            <div class="feature-box">
+                <h4>Salary Strategy for Global South Professionals:</h4>
+                <ol>
+                    <li><strong>Research Global Market Rates:</strong> Use US/European salary data for remote roles, not local rates</li>
+                    <li><strong>Cost of Living Advantage:</strong> A $80K USD salary in Southeast Asia = $150K+ lifestyle in SF/NYC</li>
+                    <li><strong>Position Yourself Competitively:</strong> Offer 70-80% of Western rates while providing exceptional value</li>
+                    <li><strong>Highlight Your Arbitrage:</strong> Lower overhead allows you to deliver premium quality at competitive rates</li>
+                    <li><strong>Emphasize ROI for Employers:</strong> They get Western-quality work at better rates, you get excellent income locally</li>
+                </ol>
+            </div>
+
+            <h4>Currency and Banking Considerations</h4>
+            <ul>
+                <li><strong>Payment Methods:</strong> Wise (formerly TransferWise), PayPal, direct bank transfer, cryptocurrency</li>
+                <li><strong>Multi-Currency Accounts:</strong> Maintain USD/EUR accounts alongside local currency</li>
+                <li><strong>Tax Considerations:</strong> Understand both local and international tax obligations</li>
+                <li><strong>Exchange Rate Protection:</strong> Consider forex strategies for income stability</li>
+            </ul>
+
+            <h3>Networking from the Global South</h3>
+
+            <h4>Building a Truly Global Network</h4>
+            <p>Your Southeast Asian base positions you uniquely for multi-continental networking:</p>
+
+            <ul>
+                <li><strong>Regional Conferences:</strong> Access world-class events in Singapore, Bangkok, KL, Jakarta at fraction of Western costs</li>
+                <li><strong>Expat Communities:</strong> Connect with international professionals living in Southeast Asia</li>
+                <li><strong>Virtual Networking:</strong> Leverage LinkedIn, Twitter, professional Discord/Slack communities</li>
+                <li><strong>Digital Nomad Hubs:</strong> Co-working spaces full of global entrepreneurs and remote professionals</li>
+                <li><strong>Embassy Events:</strong> Network through foreign embassy cultural and business events</li>
+            </ul>
+
+            <h4>Leverage Your Unique Position</h4>
+            <div class="success-box">
+                <strong>You Are a Bridge Builder:</strong>
+                <p>As a professional operating from the Global South, you can:</p>
+                <ul>
+                    <li>Connect Western companies with Asian markets</li>
+                    <li>Provide cultural insights both ways</li>
+                    <li>Offer "follow-the-sun" support across time zones</li>
+                    <li>Build bridges between developed and emerging markets</li>
+                    <li>Demonstrate adaptability and cross-cultural competence</li>
+                </ul>
+            </div>
+
+            <h3>Professional Development in Southeast Asia</h3>
+
+            <h4>World-Class Learning Resources</h4>
+            <p>Distance is no barrier to education in the digital age:</p>
+            <ul>
+                <li><strong>Online Platforms:</strong> Coursera, Udemy, LinkedIn Learning work perfectly from anywhere</li>
+                <li><strong>Time Zone Advantage:</strong> Attend live US/EU sessions in your evening, Asian sessions in your day</li>
+                <li><strong>Regional Universities:</strong> NUS (Singapore), NTU, HKUST offer world-class programs</li>
+                <li><strong>Local Tech Communities:</strong> Vibrant meetups in Bangkok, KL, Singapore, Manila, Jakarta</li>
+                <li><strong>Affordable Bootcamps:</strong> Coding bootcamps and professional courses at global quality, local prices</li>
+            </ul>
+
+            <h3>Legal and Practical Considerations</h3>
+
+            <h4>Work Authorization and Visas</h4>
+            <div class="tip-box">
+                <strong>⚠️ Important Legal Considerations:</strong>
+                <ul>
+                    <li><strong>Remote Work Visas:</strong> Many SE Asian countries now offer digital nomad visas (Thailand, Indonesia, Malaysia)</li>
+                    <li><strong>Tourist Visa Limitations:</strong> Understand local laws about working remotely on tourist visas</li>
+                    <li><strong>Tax Residency:</strong> Typically established after 180+ days in most countries</li>
+                    <li><strong>Business Registration:</strong> Consider local LLC/entity for long-term operations</li>
+                    <li><strong>Client Contracts:</strong> Clearly specify your location and work arrangement</li>
+                </ul>
+            </div>
+
+            <h4>Healthcare and Benefits</h4>
+            <ul>
+                <li><strong>International Health Insurance:</strong> Essential for global professionals (SafetyWing, Cigna Global, etc.)</li>
+                <li><strong>Local Healthcare:</strong> Excellent private hospitals in major SE Asian cities at fraction of Western costs</li>
+                <li><strong>Retirement Planning:</strong> Maintain contributions to home country systems or international options</li>
+            </ul>
+
+            <h3>Success Stories: Thriving in the Global South</h3>
+
+            <h4>The New Global Professional</h4>
+            <p>Modern professionals are discovering that success isn't about WHERE you work, but HOW you deliver value. The Global South offers:</p>
+
+            <div class="feature-box">
+                <h4>🌟 The Complete Package:</h4>
+                <ul>
+                    <li><strong>Financial Freedom:</strong> Western income + developing country costs = accelerated wealth building</li>
+                    <li><strong>Work-Life Balance:</strong> Affordable help, short commutes, outdoor lifestyle, rich culture</li>
+                    <li><strong>Global Citizenship:</strong> Multi-cultural perspective, language acquisition, international networks</li>
+                    <li><strong>Career Acceleration:</strong> Stand out as globally-minded, culturally adaptable, digitally fluent</li>
+                    <li><strong>Life Quality:</strong> Tropical weather, amazing food, friendly communities, adventure lifestyle</li>
+                </ul>
+            </div>
+
+            <h3>Using This Planner from Southeast Asia</h3>
+
+            <h4>Adapted Workflow for Global Professionals</h4>
+            <ol>
+                <li><strong>Career Profile:</strong> Emphasize international experience and remote work capabilities</li>
+                <li><strong>Geographic Preferences:</strong> Select "Remote" and specify your actual time zone</li>
+                <li><strong>Target Companies:</strong> Focus on remote-first companies and global organizations</li>
+                <li><strong>Networking:</strong> Build both local SE Asia network AND maintain global connections</li>
+                <li><strong>Interview Prep:</strong> Prepare for video calls across all major time zones</li>
+                <li><strong>Compensation:</strong> Use global market data, factor in your location advantage</li>
+            </ol>
+
+            <h4>Key Skills to Highlight</h4>
+            <p>Make sure your profile emphasizes these globally-relevant competencies:</p>
+            <ul>
+                <li>Remote work and async communication excellence</li>
+                <li>Cross-cultural communication and collaboration</li>
+                <li>Time zone management and flexibility</li>
+                <li>Digital-first tools and platforms proficiency</li>
+                <li>Self-management and results-oriented work style</li>
+                <li>Emerging markets understanding</li>
+                <li>Multiple language capabilities (if applicable)</li>
+            </ul>
+
+            <div class="success-box">
+                <h4>💡 Remember: You Are the Future of Work</h4>
+                <p>Operating from the Global South doesn't diminish your professional value—it enhances it. You represent the future: globally connected, location-independent, culturally fluent, and results-driven. Use this planner to showcase your unique strengths and position yourself for opportunities that span continents.</p>
+                
+                <p style="margin-top: 1rem;"><em>"The world is your office. Excellence transcends borders. Value knows no geography."</em></p>
+            </div>
+
+            <h3>Additional Resources for Global South Professionals</h3>
+            
+            <h4>Recommended Communities and Platforms</h4>
+            <ul>
+                <li><strong>Nomad List:</strong> Data on cost of living, internet speed, safety for digital nomads</li>
+                <li><strong>Remote OK / We Work Remotely:</strong> Remote job boards</li>
+                <li><strong>LinkedIn Groups:</strong> "Remote Work", "Digital Nomads", "Southeast Asia Professionals"</li>
+                <li><strong>Meetup.com:</strong> Find local professional communities in your SE Asian city</li>
+                <li><strong>InterNations:</strong> Global expat networking platform</li>
+                <li><strong>Local Facebook Groups:</strong> City-specific expat and professional communities</li>
+            </ul>
+
+            <h4>Stay Connected</h4>
+            <p>The beauty of operating from the Global South is that you're never isolated—you're strategically positioned at the crossroads of global commerce, connected to the whole world through fiber optic cables and satellite links, with the wisdom of diverse cultures all around you.</p>
+
+            <div class="tip-box">
+                <strong>🌏 Final Thought:</strong>
+                <p>This planner was conceived, developed, and refined from Southeast Asia—proof that world-class professional tools and resources can come from anywhere. Your location is an asset, not a limitation. Use this tool to chart your path to global career success while enjoying the incredible lifestyle the Global South offers.</p>
+            </div>
+        </section>
+
+        <div class="footer">
+            <p><strong>Professional LinkedIn Career Development & Job Search Digital Planner</strong></p>
+            <p>Your complete guide to career success</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--linkedin-blue);">
+                🌍 Developed from Southeast Asia • A Global South Perspective
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                For technical support or feature requests, refer to the Troubleshooting section above.
+            </p>
+            <p style="margin-top: 2rem; font-style: italic; color: #999;">
+                "Your career is a journey. This planner is your roadmap. Success comes from consistent action and strategic planning."
+            </p>
+            <p style="margin-top: 1rem; font-style: italic; color: #999;">
+                "Excellence transcends borders. The future of work is global. Your value knows no geography."
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('.toc a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Print function
+        function printManual() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
